@@ -183,6 +183,7 @@ fn make_libsodium(target: &str, source_dir: &Path, install_dir: &Path) -> PathBu
             "aarch64-apple-ios" => {
                 cflags += " -arch arm64";
                 cflags += &format!(" -isysroot {}", sdk_dir_ios);
+                cflags += &format!(" -L{}", format!("{}/usr/lib", sdk_dir_ios));
                 cflags += &format!(" -mios-version-min={}", ios_version_min);
                 cflags += " -fembed-bitcode";
                 host_arg = "--host=arm-apple-darwin10".to_string();
